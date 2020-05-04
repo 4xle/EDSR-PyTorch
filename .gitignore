@@ -64,3 +64,6 @@ target/
 *.txt
 *.swp
 .vscode
+
+wandb/wandb/
+src/wandb/
