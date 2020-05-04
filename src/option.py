@@ -19,8 +19,8 @@ parser.add_argument('--seed', type=int, default=1,
                     help='random seed')
 
 # Data specifications
-parser.add_argument('--dir_data', type=str, default='../../../dataset',
-                    help='dataset directory')
+parser.add_argument('--dir_data', type=str, default='/app/data/DIV2K',
+                    help='dataset directory: the parent directory containing the dataset directory. The training data should be in a folder in this directory with the dataset name.')
 parser.add_argument('--dir_demo', type=str, default='../test',
                     help='demo image directory')
 parser.add_argument('--data_train', type=str, default='DIV2K',
