@@ -8,6 +8,8 @@ import torch
 import torch.nn.utils as utils
 from tqdm import tqdm
 
+import wandb
+
 class Trainer():
     def __init__(self, args, loader, my_model, my_loss, ckp):
         self.args = args
@@ -64,6 +66,7 @@ class Trainer():
                     self.loss.display_loss(batch),
                     timer_model.release(),
                     timer_data.release()))
+                wandb.log({"loss":loss})
 
             timer_data.tic()
 
@@ -112,6 +115,7 @@ class Trainer():
                         best[1][idx_data, idx_scale] + 1
                     )
                 )
+                wandb.log({"psnr":self.ckp.log[-1, idx_data, idx_scale]})
 
         self.ckp.write_log('Forward: {:.2f}s\n'.format(timer_test.toc()))
         self.ckp.write_log('Saving...')
